@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "com.unity.render-pipelines.universal": "17.0.4"
+    "com.soupday.cc3_unity_tools": "file:C:/Users/jacam/Desktop/CCiC-Unity-Tools-main",
+    "com.unity.render-pipelines.universal": "17.0.4",
+    "com.unity.modules.cloth": "1.0.0"
   },
   "scopedRegistries": [
     {
@@ -19,4 +21,3 @@
     }
   ]
 }
-
