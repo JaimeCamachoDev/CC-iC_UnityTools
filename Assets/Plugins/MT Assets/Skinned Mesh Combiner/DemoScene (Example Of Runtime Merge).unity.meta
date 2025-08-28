@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 4fda2a95c96bfa3489b606635c524110
+timeCreated: 1544924899
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/DemoScene (Example Of
+    Runtime Merge).unity
+  uploadId: 704094

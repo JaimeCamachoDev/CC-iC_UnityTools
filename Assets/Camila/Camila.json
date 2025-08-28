@@ -604,12 +604,12 @@
                         "CC_Base_Body": {},
                         "CC_Base_TearLine": {},
                         "CC_Base_EyeOcclusion": {},
-                        "CC_Base_Teeth": {},
                         "CC_Base_Eye": {},
                         "Camila_Brow": {},
                         "Denim_shorts": {},
                         "Canvas_shoes": {},
                         "Crop_T_shirts": {},
+                        "CC_Game_Teeth": {},
                         "Side_part_wavy": {}
                     },
                     "Soft Physics": {
@@ -742,10 +742,10 @@
                                     "Shader Name": "RLTongue",
                                     "Image": {
                                         "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroN.png"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_MicroN.png"
                                         },
                                         "Gradient AO": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_GradAO.jpg"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_GradAO.jpg"
                                         }
                                     },
                                     "Variable": {
@@ -886,7 +886,7 @@
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Head/Std_Skin_Head_SSSMap.jpg"
                                         },
                                         "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroN.png"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_MicroN.png"
                                         },
                                         "Cheek Fore UpperLip Chin Mask": {
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Head/Std_Skin_Head_CFULCMask.tga"
@@ -1279,7 +1279,7 @@
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Body/Std_Skin_Body_SSSMap.png"
                                         },
                                         "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroN.png"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_MicroN.png"
                                         },
                                         "MicroNormalMask": {
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Body/Std_Skin_Body_MicroNMask.jpg"
@@ -1448,7 +1448,7 @@
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Arm/Std_Skin_Arm_SSSMap.png"
                                         },
                                         "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroN.png"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_MicroN.png"
                                         },
                                         "MicroNormalMask": {
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Arm/Std_Skin_Arm_MicroNMask.jpg"
@@ -1617,7 +1617,7 @@
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Leg/Std_Skin_Leg_SSSMap.png"
                                         },
                                         "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroN.png"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_MicroN.png"
                                         },
                                         "MicroNormalMask": {
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Skin_Leg/Std_Skin_Leg_MicroNMask.jpg"
@@ -1786,7 +1786,7 @@
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_SSSMap.jpg"
                                         },
                                         "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroN.png"
+                                            "Texture Path": "./textures/Camila/Camila/CC_Base_Tongue/Std_Tongue/Std_Tongue_MicroN.png"
                                         },
                                         "MicroNormalMask": {
                                             "Texture Path": "./textures/Camila/Camila/CC_Base_Body/Std_Nails/Std_Nails_MicroNMask.jpg"
@@ -2355,294 +2355,6 @@
                                         "Inner Corner Offset": 0.0,
                                         "Outer Corner Offset": 0.10000000149011612
                                     }
-                                }
-                            }
-                        }
-                    },
-                    "CC_Base_Teeth": {
-                        "Materials": {
-                            "Std_Upper_Teeth": {
-                                "Material Type": "Pbr",
-                                "MultiUV Index": 0,
-                                "Two Side": true,
-                                "Diffuse Color": [
-                                    255.0,
-                                    255.0,
-                                    255.0
-                                ],
-                                "Ambient Color": [
-                                    125.00000762939453,
-                                    125.00000762939453,
-                                    125.00000762939453
-                                ],
-                                "Specular Color": [
-                                    229.5,
-                                    229.5,
-                                    229.5
-                                ],
-                                "Opacity": 1.0,
-                                "Self Illumination": 0.0,
-                                "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "Base Color": {
-                                        "Texture Path": "./Camila.fbm/Std_Upper_Teeth_Diffuse.jpg",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "Roughness": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "Normal": {
-                                        "Texture Path": "./Camila.fbm/Std_Upper_Teeth_Normal.jpg",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "AO": {
-                                        "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_ao.jpg",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "MetallicAlpha": {
-                                        "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_MetallicAlpha.png"
-                                    },
-                                    "HDRP": {
-                                        "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_HDRP.png"
-                                    }
-                                },
-                                "Resource Textures": {},
-                                "Custom Shader": {
-                                    "Shader Name": "RLTeethGum",
-                                    "Image": {
-                                        "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Eye/CC_Base_Eye/Std_Cornea_R/Std_Cornea_R_ScleraN.png"
-                                        },
-                                        "Gradient AO": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_GradAO.jpg"
-                                        },
-                                        "Gums Mask": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_GumsMask.jpg"
-                                        }
-                                    },
-                                    "Variable": {
-                                        "Flip MicroNormal Y": 1.0,
-                                        "Teeth MicroNormal Tiling": 10.0,
-                                        "Teeth MicroNormal Strength": 0.30000001192092898,
-                                        "Gums MicroNormal Tiling": 10.0,
-                                        "Gums MicroNormal Strength": 0.30000001192092898,
-                                        "Teeth Edge Color": [
-                                            79.99349975585938,
-                                            29.988000869750978,
-                                            19.992000579833986
-                                        ],
-                                        "Is Upper Teeth": 1.0,
-                                        "Teeth Brightness": 0.6000000238418579,
-                                        "Teeth Desaturation": 0.0,
-                                        "Gums Brightness": 0.6959999799728394,
-                                        "Gums Desaturation": 0.3869999945163727,
-                                        "Front Roughness": 0.4000000059604645,
-                                        "Front Specular": 0.10000000149011612,
-                                        "Front AO": 1.0,
-                                        "Back AO": 0.14900000393390656,
-                                        "Back Roughness": 0.0,
-                                        "Back Specular": 0.0,
-                                        "Gums Scatter": 1.0,
-                                        "Teeth Scatter": 0.699999988079071
-                                    }
-                                },
-                                "Subsurface Scatter": {
-                                    "Falloff": [
-                                        166.0,
-                                        123.0,
-                                        101.0
-                                    ],
-                                    "Radius": 1.5,
-                                    "Distribution": 0.9300000071525574,
-                                    "IOR": 1.5499999523162842,
-                                    "DecayScale": 0.15000000596046449,
-                                    "Lerp": 0.8999999761581421
-                                }
-                            },
-                            "Std_Lower_Teeth": {
-                                "Material Type": "Pbr",
-                                "MultiUV Index": 0,
-                                "Two Side": true,
-                                "Diffuse Color": [
-                                    255.0,
-                                    255.0,
-                                    255.0
-                                ],
-                                "Ambient Color": [
-                                    125.00000762939453,
-                                    125.00000762939453,
-                                    125.00000762939453
-                                ],
-                                "Specular Color": [
-                                    229.5,
-                                    229.5,
-                                    229.5
-                                ],
-                                "Opacity": 1.0,
-                                "Self Illumination": 0.0,
-                                "Textures": {
-                                    "Metallic": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "Base Color": {
-                                        "Texture Path": "./Camila.fbm/Std_Lower_Teeth_Diffuse.jpg",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "Roughness": {
-                                        "Texture Path": "",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "Normal": {
-                                        "Texture Path": "./Camila.fbm/Std_Lower_Teeth_Normal.jpg",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "AO": {
-                                        "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Lower_Teeth/Std_Lower_Teeth_ao.jpg",
-                                        "Strength": 100.0,
-                                        "Offset": [
-                                            0.0,
-                                            0.0
-                                        ],
-                                        "Tiling": [
-                                            1.0,
-                                            1.0
-                                        ]
-                                    },
-                                    "MetallicAlpha": {
-                                        "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Lower_Teeth/Std_Lower_Teeth_MetallicAlpha.png"
-                                    },
-                                    "HDRP": {
-                                        "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Lower_Teeth/Std_Lower_Teeth_HDRP.png"
-                                    }
-                                },
-                                "Resource Textures": {},
-                                "Custom Shader": {
-                                    "Shader Name": "RLTeethGum",
-                                    "Image": {
-                                        "MicroNormal": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Eye/CC_Base_Eye/Std_Cornea_R/Std_Cornea_R_ScleraN.png"
-                                        },
-                                        "Gradient AO": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_GradAO.jpg"
-                                        },
-                                        "Gums Mask": {
-                                            "Texture Path": "./textures/Camila/CC_Base_Teeth/CC_Base_Teeth/Std_Upper_Teeth/Std_Upper_Teeth_GumsMask.jpg"
-                                        }
-                                    },
-                                    "Variable": {
-                                        "Flip MicroNormal Y": 1.0,
-                                        "Teeth MicroNormal Tiling": 10.0,
-                                        "Teeth MicroNormal Strength": 0.30000001192092898,
-                                        "Gums MicroNormal Tiling": 10.0,
-                                        "Gums MicroNormal Strength": 0.30000001192092898,
-                                        "Teeth Edge Color": [
-                                            79.99349975585938,
-                                            29.988000869750978,
-                                            19.992000579833986
-                                        ],
-                                        "Is Upper Teeth": 0.0,
-                                        "Teeth Brightness": 0.6000000238418579,
-                                        "Teeth Desaturation": 0.0,
-                                        "Gums Brightness": 0.6959999799728394,
-                                        "Gums Desaturation": 0.3869999945163727,
-                                        "Front Roughness": 0.4000000059604645,
-                                        "Front Specular": 0.10000000149011612,
-                                        "Front AO": 1.0,
-                                        "Back AO": 0.33500000834465029,
-                                        "Back Roughness": 0.0,
-                                        "Back Specular": 0.0,
-                                        "Gums Scatter": 1.0,
-                                        "Teeth Scatter": 0.699999988079071
-                                    }
-                                },
-                                "Subsurface Scatter": {
-                                    "Falloff": [
-                                        165.0,
-                                        121.0,
-                                        101.0
-                                    ],
-                                    "Radius": 1.5,
-                                    "Distribution": 0.9900000095367432,
-                                    "IOR": 1.0,
-                                    "DecayScale": 0.9300000071525574,
-                                    "Lerp": 0.8999999761581421
                                 }
                             }
                         }
@@ -3673,6 +3385,192 @@
                                     },
                                     "HDRP": {
                                         "Texture Path": "./textures/Camila/Crop_T_shirts/Crop_T_shirts/Crop_T_shirts/Crop_T_shirts_HDRP.png"
+                                    }
+                                },
+                                "Resource Textures": {}
+                            }
+                        }
+                    },
+                    "CC_Game_Teeth": {
+                        "Materials": {
+                            "Ga_Upper_Teeth": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": false,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Specular Color": [
+                                    229.5,
+                                    229.5,
+                                    229.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "./Camila.fbm/Ga_Upper_Teeth_Diffuse.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Texture Path": "./Camila.fbm/Ga_Upper_Teeth_Normal.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "AO": {
+                                        "Texture Path": "./textures/Camila/CC_Game_Teeth/CC_Game_Teeth/Ga_Upper_Teeth/Ga_Upper_Teeth_ao.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/Camila/CC_Game_Teeth/CC_Game_Teeth/Ga_Upper_Teeth/Ga_Upper_Teeth_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/Camila/CC_Game_Teeth/CC_Game_Teeth/Ga_Upper_Teeth/Ga_Upper_Teeth_HDRP.png"
+                                    }
+                                },
+                                "Resource Textures": {}
+                            },
+                            "Ga_Lower_Teeth": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": false,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Specular Color": [
+                                    229.5,
+                                    229.5,
+                                    229.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "./Camila.fbm/Ga_Lower_Teeth_Diffuse.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Texture Path": "./Camila.fbm/Ga_Lower_Teeth_Normal.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "AO": {
+                                        "Texture Path": "./textures/Camila/CC_Game_Teeth/CC_Game_Teeth/Ga_Lower_Teeth/Ga_Lower_Teeth_ao.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/Camila/CC_Game_Teeth/CC_Game_Teeth/Ga_Lower_Teeth/Ga_Lower_Teeth_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/Camila/CC_Game_Teeth/CC_Game_Teeth/Ga_Lower_Teeth/Ga_Lower_Teeth_HDRP.png"
                                     }
                                 },
                                 "Resource Textures": {}

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 14cef2032091b6d4cae1f041c2cbf03e
+timeCreated: 1548800633
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/_ScenesDemo/Anims/Animator.controller
+  uploadId: 704094

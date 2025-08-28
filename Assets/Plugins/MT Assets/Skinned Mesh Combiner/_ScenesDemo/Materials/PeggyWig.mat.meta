@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 73922510ea9775440a3b650bd9e9506e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/_ScenesDemo/Materials/PeggyWig.mat
+  uploadId: 704094

@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 730915098}
   - component: {fileID: 730915097}
+  - component: {fileID: 730915099}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -282,13 +283,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730915096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.10173952, y: 0.8796539, z: -0.41018927, w: 0.21818116}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 152.14, z: 0}
+--- !u!114 &730915099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730915096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &942242968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,6 +321,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 497288330703598629, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: d1fcccfea76a0d44186ea58cab6991c0, type: 2}
+    - target: {fileID: 3057587128051374415, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 43aa72bccf020874ea66b8dcdce167ae, type: 2}
     - target: {fileID: 3884812119376509578, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -341,12 +373,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Selene
       objectReference: {fileID: 0}
-    - target: {fileID: 7136389972875829488, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bd3fb2fc9b6ebd9428bd8c990eb352d5, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 5635270966689940258, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
+      propertyPath: m_Weight
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5049840333069769639, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 3783775635234746293, guid: 916b5e13152a69641a765f3a7684202f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916b5e13152a69641a765f3a7684202f, type: 3}

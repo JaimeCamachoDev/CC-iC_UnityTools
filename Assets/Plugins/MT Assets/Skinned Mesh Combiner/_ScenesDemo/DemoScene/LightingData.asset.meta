@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 584e3598d0e01744f9717b515c9a6d05
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/_ScenesDemo/DemoScene/LightingData.asset
+  uploadId: 704094

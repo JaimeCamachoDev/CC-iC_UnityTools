@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 730b75b4d784eb64babf2a703fe6bf56
+timeCreated: 1545776247
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/List Of Changes.txt
+  uploadId: 704094

@@ -1,5 +1,5 @@
 logType=Basic
-generation=Unknown
+generation=ActorBuild
 isLOD=false
 qualEyes=Parallax
 qualHair=TwoPass

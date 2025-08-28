@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d46b3b9ea402b2842ba1a8a7115f112d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/_ScenesDemo/Materials/PeterHumanAtlas.mat
+  uploadId: 704094

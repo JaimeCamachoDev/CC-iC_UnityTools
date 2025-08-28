@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 1333bdf4a2b856e4e8e630f82bcaa7c5
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: ArmL
+    100004: ArmR
+    100006: Backhair
+    100008: Body
+    100010: CalfL
+    100012: CalfR
+    100014: ColumnD
+    100016: ColumnU
+    100018: Eyeballs
+    100020: Eyelashes
+    100022: FootL
+    100024: FootL_end
+    100026: FootR
+    100028: FootR_end
+    100030: ForeArmL
+    100032: ForeArmL_end
+    100034: ForeArmR
+    100036: ForeArmR_end
+    100038: Fronthair
+    100040: Head
+    100042: Head_end
+    100044: LegL
+    100046: LegR
+    100048: Neck
+    100050: Pantsu
+    100052: PelvisL
+    100054: PelvisR
+    100056: //RootNode
+    100058: Shirt
+    100060: Shoes
+    100062: ShoudlerL
+    100064: ShoudlerR
+    100066: Skirt
+    100068: Tophair
+    100070: Twintails
+    400000: Armature
+    400002: ArmL
+    400004: ArmR
+    400006: Backhair
+    400008: Body
+    400010: CalfL
+    400012: CalfR
+    400014: ColumnD
+    400016: ColumnU
+    400018: Eyeballs
+    400020: Eyelashes
+    400022: FootL
+    400024: FootL_end
+    400026: FootR
+    400028: FootR_end
+    400030: ForeArmL
+    400032: ForeArmL_end
+    400034: ForeArmR
+    400036: ForeArmR_end
+    400038: Fronthair
+    400040: Head
+    400042: Head_end
+    400044: LegL
+    400046: LegR
+    400048: Neck
+    400050: Pantsu
+    400052: PelvisL
+    400054: PelvisR
+    400056: //RootNode
+    400058: Shirt
+    400060: Shoes
+    400062: ShoudlerL
+    400064: ShoudlerR
+    400066: Skirt
+    400068: Tophair
+    400070: Twintails
+    4300000: Tophair
+    4300002: Backhair
+    4300004: Twintails
+    4300006: Fronthair
+    4300008: Shoes
+    4300010: Shirt
+    4300012: Skirt
+    4300014: Pantsu
+    4300016: Eyeballs
+    4300018: Body
+    4300020: Eyelashes
+    7400000: Armature|Action
+    7400002: Idle
+    9500000: //RootNode
+    13700000: Backhair
+    13700002: Body
+    13700004: Eyeballs
+    13700006: Eyelashes
+    13700008: Fronthair
+    13700010: Pantsu
+    13700012: Shirt
+    13700014: Shoes
+    13700016: Skirt
+    13700018: Tophair
+    13700020: Twintails
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Armature|ArmatureAction
+      firstFrame: 10
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/_ScenesDemo/Models/Sara.fbx
+  uploadId: 704094

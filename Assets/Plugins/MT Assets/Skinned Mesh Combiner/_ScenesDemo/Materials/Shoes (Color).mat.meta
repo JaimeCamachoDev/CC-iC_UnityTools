@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 37d556227ba65bc438604f64db39c574
+timeCreated: 1548799844
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 135422
+  packageName: Skinned Mesh Combiner MT - Character Mesh Merge, Atlasing Support
+    & More
+  packageVersion: 3.6.1
+  assetPath: Assets/Plugins/MT Assets/Skinned Mesh Combiner/_ScenesDemo/Materials/Shoes
+    (Color).mat
+  uploadId: 704094
