@@ -1,0 +1,65 @@
+# Archivos de sistema operativo y editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+
+# Carpetas generadas por Unity (no versionar)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+UIElementsSchema/
+
+# Archivos de Unity para sesiones/crash temporales
+/.utmp
+/mono_crash.*.json
+
+# Ignorar proyecto Xcode generado (iOS)
+/Xcode/
+
+# Archivos de configuración/plug-in de IDEs
+.vs/
+.vscode/
+.idea/
+.gradle/
+
+# Archivos de solución/proyecto generados (Unity, VS, JetBrains, etc.)
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Metadatos generados por Unity (no necesarios en control de versiones)
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Reportes de crash de Unity
+sysinfo.txt
+crashlytics-build.properties
+
+# Artefactos de compilación (builds) - binarios resultantes
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.exe
+*_DoNotShip*

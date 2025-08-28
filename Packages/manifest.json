@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "17.0.4"
+  },
+  "scopedRegistries": [
+    {
+      "name": "Keijiro",
+      "url": "https://registry.npmjs.com",
+      "scopes": [
+        "jp.keijiro"
+      ]
+    },
+    {
+      "name": "JaimeCamachoDev",
+      "url": "https://registry.npmjs.org",
+      "scopes": [
+        "com.jaimecamacho"
+      ]
+    }
+  ]
+}
+
