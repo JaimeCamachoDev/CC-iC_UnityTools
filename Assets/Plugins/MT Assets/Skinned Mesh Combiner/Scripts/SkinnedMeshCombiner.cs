@@ -12,7 +12,6 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Linq;
-
 namespace MTAssets.SkinnedMeshCombiner
 {
     /* 
