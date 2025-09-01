@@ -1,0 +1,2425 @@
+{
+    "Prueba": {
+        "Version": "1.10.1822.1",
+        "Scene": {
+            "Name": true,
+            "SupportShaderSelect": true
+        },
+        "Export Directory": "C:/Users/ELGENERALISIMO/Desktop/Prueba",
+        "Object": {
+            "Prueba": {
+                "Generation": "AccuRig",
+                "Physics": {
+                    "Collision Shapes": {
+                        "RL_BoneRoot": {},
+                        "CC_Base_Hip": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 2.0,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -5.457180023193359,
+                                    3.596940755844116,
+                                    101.03797149658203
+                                ],
+                                "WorldRotationQ": [
+                                    0.8121445178985596,
+                                    0.07486286014318466,
+                                    -0.10691537708044052,
+                                    0.568670392036438
+                                ],
+                                "WorldScale": [
+                                    1.0000001192092896,
+                                    1.0000004768371583,
+                                    1.0000005960464478
+                                ],
+                                "Radius": 8.692729949951172,
+                                "Capsule Length": 24.919788360595704
+                            },
+                            "Capsule(0)": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 2.0,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    5.457491397857666,
+                                    3.596940755844116,
+                                    101.03811645507813
+                                ],
+                                "WorldRotationQ": [
+                                    0.8121430277824402,
+                                    -0.07487054914236069,
+                                    0.10692635178565979,
+                                    0.5686693787574768
+                                ],
+                                "WorldScale": [
+                                    1.0000001192092896,
+                                    1.0000004768371583,
+                                    1.0000004768371583
+                                ],
+                                "Radius": 8.692729949951172,
+                                "Capsule Length": 24.919788360595704
+                            }
+                        },
+                        "CC_Base_Pelvis": {},
+                        "CC_Base_L_Thigh": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    9.376583099365235,
+                                    2.1698157787323,
+                                    69.63754272460938
+                                ],
+                                "WorldRotationQ": [
+                                    -0.032391879707574847,
+                                    0.7408305406570435,
+                                    -0.670126736164093,
+                                    -0.032418638467788699
+                                ],
+                                "WorldScale": [
+                                    1.0000008344650269,
+                                    1.0000005960464478,
+                                    0.9999998807907105
+                                ],
+                                "Radius": 7.471284866333008,
+                                "Capsule Length": 42.28239440917969
+                            }
+                        },
+                        "CC_Base_L_Calf": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    8.468270301818848,
+                                    4.926326274871826,
+                                    27.43396759033203
+                                ],
+                                "WorldRotationQ": [
+                                    -0.00864153541624546,
+                                    0.7118626832962036,
+                                    -0.7022462487220764,
+                                    -0.005197111051529646
+                                ],
+                                "WorldScale": [
+                                    1.000000238418579,
+                                    1.0000001192092896,
+                                    1.000000238418579
+                                ],
+                                "Radius": 6.164681434631348,
+                                "Capsule Length": 35.077964782714847
+                            }
+                        },
+                        "CC_Base_L_Foot": {},
+                        "CC_Base_L_ToeBaseShareBone": {},
+                        "CC_Base_L_ToeBase": {},
+                        "CC_Base_L_PinkyToe1": {},
+                        "CC_Base_L_RingToe1": {},
+                        "CC_Base_L_MidToe1": {},
+                        "CC_Base_L_IndexToe1": {},
+                        "CC_Base_L_BigToe1": {},
+                        "CC_Base_L_CalfTwist01": {},
+                        "CC_Base_L_CalfTwist02": {},
+                        "CC_Base_L_KneeShareBone": {},
+                        "CC_Base_L_ThighTwist01": {},
+                        "CC_Base_L_ThighTwist02": {},
+                        "CC_Base_R_Thigh": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -9.368013381958008,
+                                    2.1879160404205324,
+                                    69.63652801513672
+                                ],
+                                "WorldRotationQ": [
+                                    0.032850924879312518,
+                                    0.7410614490509033,
+                                    -0.6698534488677979,
+                                    0.03232737258076668
+                                ],
+                                "WorldScale": [
+                                    1.0000008344650269,
+                                    1.0000007152557374,
+                                    1.0
+                                ],
+                                "Radius": 7.438785552978516,
+                                "Capsule Length": 42.342063903808597
+                            }
+                        },
+                        "CC_Base_R_Calf": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -8.463359832763672,
+                                    4.994534492492676,
+                                    27.43294334411621
+                                ],
+                                "WorldRotationQ": [
+                                    0.008925593458116055,
+                                    0.7114489078521729,
+                                    -0.7026640772819519,
+                                    0.0049022589810192589
+                                ],
+                                "WorldScale": [
+                                    0.9999999403953552,
+                                    0.9999998807907105,
+                                    0.9999998807907105
+                                ],
+                                "Radius": 6.154090881347656,
+                                "Capsule Length": 35.099159240722659
+                            }
+                        },
+                        "CC_Base_R_KneeShareBone": {},
+                        "CC_Base_R_Foot": {},
+                        "CC_Base_R_ToeBase": {},
+                        "CC_Base_R_BigToe1": {},
+                        "CC_Base_R_PinkyToe1": {},
+                        "CC_Base_R_RingToe1": {},
+                        "CC_Base_R_IndexToe1": {},
+                        "CC_Base_R_MidToe1": {},
+                        "CC_Base_R_ToeBaseShareBone": {},
+                        "CC_Base_R_CalfTwist01": {},
+                        "CC_Base_R_CalfTwist02": {},
+                        "CC_Base_R_ThighTwist01": {},
+                        "CC_Base_R_ThighTwist02": {},
+                        "CC_Base_Waist": {},
+                        "CC_Base_Spine01": {
+                            "Capsule(1)": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Z",
+                                "Margin": 2.0,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    0.003067147685214877,
+                                    2.070779800415039,
+                                    124.67426300048828
+                                ],
+                                "WorldRotationQ": [
+                                    0.4606461524963379,
+                                    0.5368344783782959,
+                                    0.46037471294403078,
+                                    0.5363478660583496
+                                ],
+                                "WorldScale": [
+                                    1.0000001192092896,
+                                    0.9999998807907105,
+                                    1.0000001192092896
+                                ],
+                                "Radius": 12.009812355041504,
+                                "Capsule Length": 5.229341506958008
+                            }
+                        },
+                        "CC_Base_Spine02": {},
+                        "CC_Base_NeckTwist01": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    0.015904661267995836,
+                                    4.234317779541016,
+                                    154.22988891601563
+                                ],
+                                "WorldRotationQ": [
+                                    0.7543407082557678,
+                                    0.003720015985891223,
+                                    -0.0022190336603671314,
+                                    0.6564688086509705
+                                ],
+                                "WorldScale": [
+                                    1.0,
+                                    0.9999999403953552,
+                                    0.9999997019767761
+                                ],
+                                "Radius": 5.26112174987793,
+                                "Capsule Length": 5.3052263259887699
+                            },
+                            "Capsule(0)": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Z",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -0.08911538869142533,
+                                    2.584872245788574,
+                                    140.63818359375
+                                ],
+                                "WorldRotationQ": [
+                                    0.5349685549736023,
+                                    0.4668239653110504,
+                                    0.531830370426178,
+                                    0.4615631103515625
+                                ],
+                                "WorldScale": [
+                                    0.9999996423721314,
+                                    0.9999999403953552,
+                                    1.0
+                                ],
+                                "Radius": 10.932323455810547,
+                                "Capsule Length": 13.708892822265625
+                            },
+                            "Capsule(1)": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -7.095621585845947,
+                                    -2.1139237880706789,
+                                    138.51214599609376
+                                ],
+                                "WorldRotationQ": [
+                                    0.2883337438106537,
+                                    0.648829460144043,
+                                    0.2877056896686554,
+                                    0.6427358984947205
+                                ],
+                                "WorldScale": [
+                                    0.9999997019767761,
+                                    0.9999999403953552,
+                                    1.0
+                                ],
+                                "Radius": 7.259905815124512,
+                                "Capsule Length": 13.249418258666993
+                            },
+                            "Capsule(2)": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    6.903852939605713,
+                                    -2.0761396884918215,
+                                    138.3968963623047
+                                ],
+                                "WorldRotationQ": [
+                                    0.2883337438106537,
+                                    0.648829460144043,
+                                    0.2877056896686554,
+                                    0.6427358984947205
+                                ],
+                                "WorldScale": [
+                                    0.9999997019767761,
+                                    0.9999999403953552,
+                                    1.0
+                                ],
+                                "Radius": 7.259905815124512,
+                                "Capsule Length": 13.249418258666993
+                            }
+                        },
+                        "CC_Base_NeckTwist02": {},
+                        "CC_Base_Head": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    0.050013020634651187,
+                                    1.4523311853408814,
+                                    167.27557373046876
+                                ],
+                                "WorldRotationQ": [
+                                    0.7081232666969299,
+                                    0.0016871094703674317,
+                                    0.0026268071960657837,
+                                    0.7060818672180176
+                                ],
+                                "WorldScale": [
+                                    1.0000001192092896,
+                                    1.0,
+                                    1.0
+                                ],
+                                "Radius": 7.414434432983398,
+                                "Capsule Length": 6.968162536621094
+                            }
+                        },
+                        "CC_Base_FacialBone": {},
+                        "CC_Base_JawRoot": {},
+                        "CC_Base_Tongue01": {},
+                        "CC_Base_Tongue02": {},
+                        "CC_Base_Tongue03": {},
+                        "CC_Base_Teeth02": {},
+                        "CC_Base_R_Eye": {},
+                        "CC_Base_L_Eye": {},
+                        "CC_Base_UpperJaw": {},
+                        "CC_Base_Teeth01": {},
+                        "CC_Base_L_Clavicle": {},
+                        "CC_Base_L_Upperarm": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    28.496965408325197,
+                                    9.711073875427246,
+                                    143.65196228027345
+                                ],
+                                "WorldRotationQ": [
+                                    0.4937323331832886,
+                                    0.5409536957740784,
+                                    -0.4731549620628357,
+                                    0.48961400985717776
+                                ],
+                                "WorldScale": [
+                                    1.0000001192092896,
+                                    1.0000001192092896,
+                                    1.0
+                                ],
+                                "Radius": 5.045429229736328,
+                                "Capsule Length": 22.943687438964845
+                            }
+                        },
+                        "CC_Base_L_Forearm": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    56.26430892944336,
+                                    10.319374084472657,
+                                    144.07476806640626
+                                ],
+                                "WorldRotationQ": [
+                                    0.5058284997940064,
+                                    0.5278238654136658,
+                                    -0.4861552119255066,
+                                    0.47874075174331667
+                                ],
+                                "WorldScale": [
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ],
+                                "Radius": 4.368340492248535,
+                                "Capsule Length": 21.781402587890626
+                            }
+                        },
+                        "CC_Base_L_ForearmTwist01": {},
+                        "CC_Base_L_ForearmTwist02": {},
+                        "CC_Base_L_ElbowShareBone": {},
+                        "CC_Base_L_Hand": {
+                            "Capsule": {
+                                "Bone Active": false,
+                                "Bound Type": "Box",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    74.40650177001953,
+                                    9.537322998046875,
+                                    143.36328125
+                                ],
+                                "WorldRotationQ": [
+                                    0.5005706548690796,
+                                    0.5335156917572022,
+                                    -0.4786564111709595,
+                                    0.4854668974876404
+                                ],
+                                "WorldScale": [
+                                    0.9999999403953552,
+                                    1.0,
+                                    1.0000001192092896
+                                ],
+                                "Extent": [
+                                    4.522912502288818,
+                                    9.572021484375,
+                                    8.070651054382325
+                                ]
+                            }
+                        },
+                        "CC_Base_L_Pinky1": {},
+                        "CC_Base_L_Pinky2": {},
+                        "CC_Base_L_Pinky3": {},
+                        "CC_Base_L_Ring1": {},
+                        "CC_Base_L_Ring2": {},
+                        "CC_Base_L_Ring3": {},
+                        "CC_Base_L_Mid1": {},
+                        "CC_Base_L_Mid2": {},
+                        "CC_Base_L_Mid3": {},
+                        "CC_Base_L_Index1": {},
+                        "CC_Base_L_Index2": {},
+                        "CC_Base_L_Index3": {},
+                        "CC_Base_L_Thumb1": {},
+                        "CC_Base_L_Thumb2": {},
+                        "CC_Base_L_Thumb3": {},
+                        "CC_Base_L_UpperarmTwist01": {},
+                        "CC_Base_L_UpperarmTwist02": {},
+                        "CC_Base_L_RibsTwist": {},
+                        "CC_Base_L_Breast": {},
+                        "CC_Base_R_RibsTwist": {},
+                        "CC_Base_R_Breast": {},
+                        "CC_Base_R_Clavicle": {},
+                        "CC_Base_R_Upperarm": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -28.508588790893556,
+                                    9.692086219787598,
+                                    143.65353393554688
+                                ],
+                                "WorldRotationQ": [
+                                    -0.4938752353191376,
+                                    0.5405935645103455,
+                                    -0.4734751284122467,
+                                    -0.4895581603050232
+                                ],
+                                "WorldScale": [
+                                    0.9999999403953552,
+                                    0.9999998807907105,
+                                    1.0
+                                ],
+                                "Radius": 5.045188903808594,
+                                "Capsule Length": 22.957778930664064
+                            }
+                        },
+                        "CC_Base_R_Forearm": {
+                            "Capsule": {
+                                "Bone Active": true,
+                                "Bound Type": "Capsule",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -56.25962448120117,
+                                    10.438697814941407,
+                                    144.08956909179688
+                                ],
+                                "WorldRotationQ": [
+                                    -0.5027327537536621,
+                                    0.5311031341552734,
+                                    -0.48258501291275027,
+                                    -0.48197606205940249
+                                ],
+                                "WorldScale": [
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ],
+                                "Radius": 4.368199348449707,
+                                "Capsule Length": 21.766496658325197
+                            }
+                        },
+                        "CC_Base_R_ElbowShareBone": {},
+                        "CC_Base_R_ForearmTwist01": {},
+                        "CC_Base_R_ForearmTwist02": {},
+                        "CC_Base_R_Hand": {
+                            "Capsule": {
+                                "Bone Active": false,
+                                "Bound Type": "Box",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    -74.42257690429688,
+                                    9.799192428588868,
+                                    143.39520263671876
+                                ],
+                                "WorldRotationQ": [
+                                    -0.5001593828201294,
+                                    0.5341408252716065,
+                                    -0.4749758243560791,
+                                    -0.4888068735599518
+                                ],
+                                "WorldScale": [
+                                    1.0,
+                                    1.000000238418579,
+                                    1.0000001192092896
+                                ],
+                                "Extent": [
+                                    5.31480073928833,
+                                    9.573326110839844,
+                                    8.195566177368164
+                                ]
+                            }
+                        },
+                        "CC_Base_R_Ring1": {},
+                        "CC_Base_R_Ring2": {},
+                        "CC_Base_R_Ring3": {},
+                        "CC_Base_R_Mid1": {},
+                        "CC_Base_R_Mid2": {},
+                        "CC_Base_R_Mid3": {},
+                        "CC_Base_R_Thumb1": {},
+                        "CC_Base_R_Thumb2": {},
+                        "CC_Base_R_Thumb3": {},
+                        "CC_Base_R_Index1": {},
+                        "CC_Base_R_Index2": {},
+                        "CC_Base_R_Index3": {},
+                        "CC_Base_R_Pinky1": {},
+                        "CC_Base_R_Pinky2": {},
+                        "CC_Base_R_Pinky3": {},
+                        "CC_Base_R_UpperarmTwist01": {},
+                        "CC_Base_R_UpperarmTwist02": {},
+                        "CC_Game_Body": {},
+                        "CC_Game_Tongue": {},
+                        "Slim_Fit_Trousers": {},
+                        "Sport_sneakers": {},
+                        "Fit_shirts": {},
+                        "CC_Base_Eye": {},
+                        "CC_Game_Teeth": {},
+                        "CC_Game_Body_Extract": {},
+                        "CC_Game_Body_Extract_0": {},
+                        "Classic_Slick_Back": {
+                            "Box": {
+                                "Bone Active": false,
+                                "Bound Type": "Box",
+                                "Bound Axis": "Y",
+                                "Margin": 0.800000011920929,
+                                "Friction": 0.05000000074505806,
+                                "Elasticity": 0.5,
+                                "WorldTranslate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "WorldRotationQ": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ],
+                                "WorldScale": [
+                                    1.0,
+                                    1.0,
+                                    1.0
+                                ],
+                                "Extent": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ]
+                            }
+                        }
+                    }
+                },
+                "ExpressionSet": "6",
+                "Expression": {
+                    "Brow_Down_L": {
+                        "Bones": {}
+                    },
+                    "Brow_Down_R": {
+                        "Bones": {}
+                    },
+                    "Brow_Lateral_L": {
+                        "Bones": {}
+                    },
+                    "Brow_Lateral_R": {
+                        "Bones": {}
+                    },
+                    "Brow_Raise_In_L": {
+                        "Bones": {}
+                    },
+                    "Brow_Raise_In_R": {
+                        "Bones": {}
+                    },
+                    "Brow_Raise_Outer_L": {
+                        "Bones": {}
+                    },
+                    "Brow_Raise_Outer_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Blink_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Blink_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Widen_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Widen_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Squint_Inner_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Squint_Inner_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Cheek_Raise_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Cheek_Raise_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Face_Scrunch_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Face_Scrunch_R": {
+                        "Bones": {}
+                    },
+                    "Eye_LowerLid_Down_L": {
+                        "Bones": {}
+                    },
+                    "Eye_LowerLid_Down_R": {
+                        "Bones": {}
+                    },
+                    "Eye_LowerLid_Up_L": {
+                        "Bones": {}
+                    },
+                    "Eye_LowerLid_Up_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Relax_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Relax_R": {
+                        "Bones": {}
+                    },
+                    "Eye_UpperLid_Up_L": {
+                        "Bones": {}
+                    },
+                    "Eye_UpperLid_Up_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Lid_Press_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Lid_Press_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Look_Up_L": {
+                        "Bones": {
+                            "CC_Base_L_Eye": {
+                                "Translate": [
+                                    -0.07968759536743164,
+                                    -0.007123470306396484,
+                                    0.041687965393066409
+                                ],
+                                "Rotation": [
+                                    -0.24295851588249207,
+                                    -0.000035256147384643558,
+                                    0.000031449832022190097,
+                                    0.9700366258621216
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Up_R": {
+                        "Bones": {
+                            "CC_Base_R_Eye": {
+                                "Translate": [
+                                    -0.07967138290405274,
+                                    -0.007124423980712891,
+                                    -0.041687965393066409
+                                ],
+                                "Rotation": [
+                                    -0.24295857548713685,
+                                    0.00003510713577270508,
+                                    -0.000031651812605559829,
+                                    0.9700366258621216
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Down_L": {
+                        "Bones": {
+                            "CC_Base_L_Eye": {
+                                "Translate": [
+                                    0.13667678833007813,
+                                    0.027143478393554689,
+                                    0.000001430511474609375
+                                ],
+                                "Rotation": [
+                                    0.3324742317199707,
+                                    0.00003454089164733887,
+                                    -0.00003563473001122475,
+                                    0.9431122541427612
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Down_R": {
+                        "Bones": {
+                            "CC_Base_R_Eye": {
+                                "Translate": [
+                                    0.13670682907104493,
+                                    0.027143478393554689,
+                                    -0.0000019073486328125
+                                ],
+                                "Rotation": [
+                                    0.33247455954551699,
+                                    -0.000034332275390625,
+                                    0.00003564823418855667,
+                                    0.9431121945381165
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Left_L": {
+                        "Bones": {
+                            "CC_Base_L_Eye": {
+                                "Translate": [
+                                    -0.000007152557373046875,
+                                    -0.05181074142456055,
+                                    -0.032010555267333987
+                                ],
+                                "Rotation": [
+                                    0.0000387430154660251,
+                                    -0.000003099441300946637,
+                                    0.38836759328842165,
+                                    0.9215044379234314
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Left_R": {
+                        "Bones": {
+                            "CC_Base_R_Eye": {
+                                "Translate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Rotation": [
+                                    -2.3841856489070779e-7,
+                                    -4.1723248500602497e-7,
+                                    0.32794517278671267,
+                                    0.9446967244148254
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Right_L": {
+                        "Bones": {
+                            "CC_Base_L_Eye": {
+                                "Translate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Rotation": [
+                                    -5.960463411724959e-8,
+                                    2.9802317058624795e-8,
+                                    -0.3279448449611664,
+                                    0.9446967244148254
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Look_Right_R": {
+                        "Bones": {
+                            "CC_Base_R_Eye": {
+                                "Translate": [
+                                    -0.000002384185791015625,
+                                    -0.05181074142456055,
+                                    0.03201031684875488
+                                ],
+                                "Rotation": [
+                                    0.00003895162808476016,
+                                    0.0000025928015929821415,
+                                    -0.38836777210235598,
+                                    0.9215043187141419
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Parallel_Look_Direction": {
+                        "Bones": {
+                            "CC_Base_L_Eye": {
+                                "Translate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Rotation": [
+                                    -0.0000022917520254850389,
+                                    -2.086162567138672e-7,
+                                    -0.017596090212464334,
+                                    0.9998451471328735
+                                ]
+                            },
+                            "CC_Base_R_Eye": {
+                                "Translate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Rotation": [
+                                    -1.0477378964424134e-8,
+                                    -1.7881393432617188e-7,
+                                    0.008726282976567746,
+                                    0.9999618530273438
+                                ]
+                            }
+                        }
+                    },
+                    "Eye_Pupil_Narrow_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Pupil_Narrow_R": {
+                        "Bones": {}
+                    },
+                    "Eye_Pupil_Wide_L": {
+                        "Bones": {}
+                    },
+                    "Eye_Pupil_Wide_R": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Down_IN_L": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Down_OUT_L": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Down_IN_R": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Down_OUT_R": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Up_IN_L": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Up_OUT_L": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Up_IN_R": {
+                        "Bones": {}
+                    },
+                    "Eyelashes_Up_OUT_R": {
+                        "Bones": {}
+                    },
+                    "Ear_Up_L": {
+                        "Bones": {}
+                    },
+                    "Ear_Up_R": {
+                        "Bones": {}
+                    },
+                    "Nose_Wrinkle_L": {
+                        "Bones": {}
+                    },
+                    "Nose_Wrinkle_R": {
+                        "Bones": {}
+                    },
+                    "Nose_Nostril_Depress_L": {
+                        "Bones": {}
+                    },
+                    "Nose_Nostril_Depress_R": {
+                        "Bones": {}
+                    },
+                    "Nose_Nostril_Dilate_L": {
+                        "Bones": {}
+                    },
+                    "Nose_Nostril_Dilate_R": {
+                        "Bones": {}
+                    },
+                    "Nose_Nostril_Compress_L": {
+                        "Bones": {}
+                    },
+                    "Nose_Nostril_Compress_R": {
+                        "Bones": {}
+                    },
+                    "Nose_Nasolabial_Deepen_L": {
+                        "Bones": {}
+                    },
+                    "Nose_Nasolabial_Deepen_R": {
+                        "Bones": {}
+                    },
+                    "Nose_Wrinkle_Upper_L": {
+                        "Bones": {}
+                    },
+                    "Nose_Wrinkle_Upper_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Cheek_Suck_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Cheek_Suck_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Cheek_Blow_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Cheek_Blow_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Raise_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Raise_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Depress_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Depress_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Pull_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Pull_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Stretch_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Stretch_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Dimple_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Dimple_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Depress_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Depress_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_SharpCorner_Pull_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_SharpCorner_Pull_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Left": {
+                        "Bones": {}
+                    },
+                    "Mouth_Right": {
+                        "Bones": {}
+                    },
+                    "Mouth_Up": {
+                        "Bones": {}
+                    },
+                    "Mouth_Down": {
+                        "Bones": {}
+                    },
+                    "Mouth_StretchLips_Close_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_StretchLips_Close_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Purse_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Purse_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Purse_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Purse_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Towards_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Towards_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Towards_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Towards_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Funnel_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Funnel_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Funnel_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Funnel_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Bite_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Bite_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Bite_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Bite_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Tighten_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Tighten_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Tighten_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Tighten_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Press_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Press_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Mouth_Press_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Mouth_Press_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Mouth_Press_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Mouth_Press_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Blow_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Blow_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Together_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Together_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Together_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Together_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Push_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Push_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Push_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Push_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Pull_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Pull_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Pull_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Pull_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_Inward_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_Inward_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_Inward_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thin_Inward_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_Inward_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_Inward_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_Inward_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Thick_Inward_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Sharpen_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Sharpen_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Sharpen_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Sharpen_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Rounder_UL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Rounder_UR": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Rounder_DL": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Rounder_DR": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Shift_Left": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Shift_Right": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Shift_Left": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Shift_Right": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_RollIn_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_RollIn_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Roll_Out_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Roll_Out_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_RollIn_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_RollIn_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Roll_Out_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Roll_Out_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Up_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Up_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Down_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Down_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Wide_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Wide_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Narrow_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Corner_Narrow_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Towards_Teeth_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_UpperLip_Towards_Teeth_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Towards_Teeth_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_LowerLip_Towards_Teeth_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_UC": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_U_IN_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_U_IN_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_U_OUT_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_U_OUT_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_DC": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_D_IN_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_D_IN_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_D_OUT_L": {
+                        "Bones": {}
+                    },
+                    "Mouth_Sticky_D_OUT_R": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Sticky_L_Ph1": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Sticky_L_Ph2": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Sticky_L_Ph3": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Sticky_R_Ph1": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Sticky_R_Ph2": {
+                        "Bones": {}
+                    },
+                    "Mouth_Lips_Sticky_R_Ph3": {
+                        "Bones": {}
+                    },
+                    "Teeth_Back_D": {
+                        "Bones": {
+                            "CC_Base_Tongue01": {
+                                "Translate": [
+                                    -1.0000903606414796,
+                                    -0.0003960132598876953,
+                                    -0.00042491406202316284
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Teeth_Back_U": {
+                        "Bones": {}
+                    },
+                    "Teeth_Down_D": {
+                        "Bones": {
+                            "CC_Base_Tongue01": {
+                                "Translate": [
+                                    -0.00013947486877441406,
+                                    1.127623438835144,
+                                    -0.00024079158902168274
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Teeth_Down_U": {
+                        "Bones": {}
+                    },
+                    "Teeth_Fwd_D": {
+                        "Bones": {
+                            "CC_Base_Tongue01": {
+                                "Translate": [
+                                    1.0000898838043213,
+                                    0.0003960132598876953,
+                                    0.00042491406202316284
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Teeth_Fwd_U": {
+                        "Bones": {}
+                    },
+                    "Teeth_Left_D": {
+                        "Bones": {
+                            "CC_Base_Tongue01": {
+                                "Translate": [
+                                    0.00006461143493652344,
+                                    -0.0007808804512023926,
+                                    1.094401478767395
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Teeth_Left_U": {
+                        "Bones": {}
+                    },
+                    "Teeth_Right_D": {
+                        "Bones": {
+                            "CC_Base_Tongue01": {
+                                "Translate": [
+                                    -0.00006508827209472656,
+                                    0.000780940055847168,
+                                    -1.0944015979766846
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Teeth_Right_U": {
+                        "Bones": {}
+                    },
+                    "Teeth_Up_D": {
+                        "Bones": {
+                            "CC_Base_Tongue01": {
+                                "Translate": [
+                                    0.00013875961303710938,
+                                    -1.1276233196258546,
+                                    0.00024079252034425735
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Teeth_Up_U": {
+                        "Bones": {}
+                    },
+                    "Tongue_Out": {
+                        "Bones": {}
+                    },
+                    "Tongue_In": {
+                        "Bones": {}
+                    },
+                    "Tongue_Up": {
+                        "Bones": {}
+                    },
+                    "Tongue_Down": {
+                        "Bones": {}
+                    },
+                    "Tongue_Bend_Down": {
+                        "Bones": {}
+                    },
+                    "Tongue_Tip_Up": {
+                        "Bones": {}
+                    },
+                    "Tongue_Tip_Down": {
+                        "Bones": {}
+                    },
+                    "Tongue_Narrow": {
+                        "Bones": {}
+                    },
+                    "Tongue_Wide": {
+                        "Bones": {}
+                    },
+                    "Tongue_Roll": {
+                        "Bones": {}
+                    },
+                    "Tongue_Left": {
+                        "Bones": {}
+                    },
+                    "Tongue_Right": {
+                        "Bones": {}
+                    },
+                    "Tongue_Tip_Left": {
+                        "Bones": {}
+                    },
+                    "Tongue_Tip_Right": {
+                        "Bones": {}
+                    },
+                    "Tongue_Twist_Left": {
+                        "Bones": {}
+                    },
+                    "Tongue_Twist_Right": {
+                        "Bones": {}
+                    },
+                    "Tongue_Bend_Up": {
+                        "Bones": {}
+                    },
+                    "Tongue_Press": {
+                        "Bones": {}
+                    },
+                    "Tongue_Thick": {
+                        "Bones": {}
+                    },
+                    "Tongue_Thin": {
+                        "Bones": {}
+                    },
+                    "Jaw_Open": {
+                        "Bones": {
+                            "CC_Base_JawRoot": {
+                                "Translate": [
+                                    -0.6424865126609802,
+                                    -0.27780091762542727,
+                                    4.6659260988235476e-7
+                                ],
+                                "Rotation": [
+                                    -0.000004548204287857516,
+                                    -0.00002918984682764858,
+                                    0.2030770629644394,
+                                    0.9791626930236816
+                                ]
+                            }
+                        }
+                    },
+                    "Jaw_Left": {
+                        "Bones": {
+                            "CC_Base_JawRoot": {
+                                "Translate": [
+                                    -0.006372809410095215,
+                                    -0.00432586669921875,
+                                    0.7194570302963257
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Jaw_Right": {
+                        "Bones": {
+                            "CC_Base_JawRoot": {
+                                "Translate": [
+                                    -0.00637209415435791,
+                                    -0.00432586669921875,
+                                    -0.7194568514823914
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Jaw_Fwd": {
+                        "Bones": {
+                            "CC_Base_JawRoot": {
+                                "Translate": [
+                                    -0.0009626150131225586,
+                                    0.6810950040817261,
+                                    -2.60770320892334e-8
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Jaw_Back": {
+                        "Bones": {
+                            "CC_Base_JawRoot": {
+                                "Translate": [
+                                    0.0006417036056518555,
+                                    -0.45406365394592287,
+                                    1.955777406692505e-8
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Jaw_Chin_Raise_DL": {
+                        "Bones": {}
+                    },
+                    "Jaw_Chin_Raise_DR": {
+                        "Bones": {}
+                    },
+                    "Jaw_Chin_Raise_UL": {
+                        "Bones": {}
+                    },
+                    "Jaw_Chin_Raise_UR": {
+                        "Bones": {}
+                    },
+                    "Jaw_Chin_Compress_L": {
+                        "Bones": {}
+                    },
+                    "Jaw_Chin_Compress_R": {
+                        "Bones": {}
+                    },
+                    "Jaw_Clench_L": {
+                        "Bones": {}
+                    },
+                    "Jaw_Clench_R": {
+                        "Bones": {}
+                    },
+                    "Jaw_Open_Extreme": {
+                        "Bones": {
+                            "CC_Base_JawRoot": {
+                                "Translate": [
+                                    -0.22487032413482667,
+                                    -0.09723067283630371,
+                                    1.6391277313232423e-7
+                                ],
+                                "Rotation": [
+                                    -0.0000016016543895602809,
+                                    -0.000010279231901222375,
+                                    0.07151374965906143,
+                                    0.9974396228790283
+                                ]
+                            }
+                        }
+                    },
+                    "Neck_Throat_Up": {
+                        "Bones": {}
+                    },
+                    "Neck_Throat_Down": {
+                        "Bones": {}
+                    },
+                    "Neck_Stretch_L": {
+                        "Bones": {}
+                    },
+                    "Neck_Stretch_R": {
+                        "Bones": {}
+                    },
+                    "Neck_Swallow_Ph1": {
+                        "Bones": {}
+                    },
+                    "Neck_Swallow_Ph2": {
+                        "Bones": {}
+                    },
+                    "Neck_Swallow_Ph3": {
+                        "Bones": {}
+                    },
+                    "Neck_Swallow_Ph4": {
+                        "Bones": {}
+                    },
+                    "Neck_Throat_Exhale": {
+                        "Bones": {}
+                    },
+                    "Neck_Throat_Inhale": {
+                        "Bones": {}
+                    },
+                    "Neck_Digastric_Down": {
+                        "Bones": {}
+                    },
+                    "Neck_Digastric_Up": {
+                        "Bones": {}
+                    },
+                    "Neck_Mastoid_Contract_L": {
+                        "Bones": {}
+                    },
+                    "Neck_Mastoid_Contract_R": {
+                        "Bones": {}
+                    },
+                    "Neck_Swallow_Ph5": {
+                        "Bones": {}
+                    },
+                    "Head_Turn_Up": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Rotation": [
+                                    -0.25881868600845339,
+                                    2.9103821783116325e-11,
+                                    -1.164152871324653e-10,
+                                    0.9659258723258972
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Turn_Down": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Rotation": [
+                                    0.15643465518951417,
+                                    -9.458743510659673e-11,
+                                    -7.275956226404645e-11,
+                                    0.9876882433891296
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Turn_L": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    1.679998517036438,
+                                    -0.0017447471618652344,
+                                    0.0005837678909301758
+                                ],
+                                "Rotation": [
+                                    -0.0015400650445371867,
+                                    0.4305083155632019,
+                                    -0.003228995017707348,
+                                    0.9025793671607971
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Turn_R": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    -1.679998755455017,
+                                    -0.0017328262329101563,
+                                    0.0005843639373779297
+                                ],
+                                "Rotation": [
+                                    -0.001538024633191526,
+                                    -0.4305087625980377,
+                                    0.003229182679206133,
+                                    0.902579128742218
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Tilt_L": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    0.6400005221366882,
+                                    -0.000023603439331054689,
+                                    0.0001227855682373047
+                                ],
+                                "Rotation": [
+                                    3.568403315057367e-7,
+                                    4.656613938891496e-8,
+                                    -0.20278728008270265,
+                                    0.97922283411026
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Tilt_R": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    -0.6399994492530823,
+                                    -0.000023365020751953126,
+                                    0.0001227855682373047
+                                ],
+                                "Rotation": [
+                                    3.2100618341246447e-7,
+                                    -6.426126475389538e-8,
+                                    0.2027873396873474,
+                                    0.9792227745056152
+                                ]
+                            }
+                        }
+                    },
+                    "Head_L": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    2.000000238418579,
+                                    -0.00827789306640625,
+                                    0.00007146596908569336
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Head_R": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    -2.0000009536743166,
+                                    0.00011324882507324219,
+                                    0.0001156926155090332
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Forward": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    3.7532299757003786e-7,
+                                    0.5761525630950928,
+                                    2.895965099334717
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    },
+                    "Head_Backward": {
+                        "Bones": {
+                            "CC_Base_Head": {
+                                "Translate": [
+                                    6.025657057762146e-7,
+                                    -0.5006349086761475,
+                                    -2.546692371368408
+                                ],
+                                "Rotation": [
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    1.0
+                                ]
+                            }
+                        }
+                    }
+                },
+                "Constraint": {},
+                "Meshes": {
+                    "Sport_sneakers": {
+                        "SubD Level": 0,
+                        "Materials": {
+                            "__meshes_Merge": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Specular Color": [
+                                    127.5,
+                                    127.5,
+                                    127.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "__meshes_Merge_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Glow": {
+                                        "Texture Path": "./textures/Prueba/Prueba/Sport_sneakers/__meshes_Merge/__meshes_Merge_Glow.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Opacity": {
+                                        "Texture Path": "__meshes_Merge_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Texture Path": "__meshes_Merge_Normal.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "AO": {
+                                        "Texture Path": "./textures/Prueba/Prueba/Sport_sneakers/__meshes_Merge/__meshes_Merge_ao.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/Prueba/Prueba/Sport_sneakers/__meshes_Merge/__meshes_Merge_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/Prueba/Prueba/Sport_sneakers/__meshes_Merge/__meshes_Merge_HDRP.png"
+                                    }
+                                },
+                                "Resource Textures": {
+                                    "Position": {
+                                        "Texture Path": "./textures/Prueba/Prueba/Sport_sneakers/__meshes_Merge/__meshes_Merge_ResourceMap_Position.png"
+                                    },
+                                    "WSNormal": {
+                                        "Texture Path": "./textures/Prueba/Prueba/Sport_sneakers/__meshes_Merge/__meshes_Merge_Glow.png"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "CC_Base_Eye": {
+                        "SubD Level": 0,
+                        "Materials": {
+                            "__meshes_Merge_0": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Specular Color": [
+                                    127.5,
+                                    127.5,
+                                    127.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "__meshes_Merge_0_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Opacity": {
+                                        "Texture Path": "__meshes_Merge_0_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Texture Path": "__meshes_Merge_0_Normal.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "AO": {
+                                        "Texture Path": "./textures/Prueba/Prueba/CC_Base_Eye/__meshes_Merge_0/__meshes_Merge_0_ao.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/Prueba/Prueba/CC_Base_Eye/__meshes_Merge_0/__meshes_Merge_0_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/Prueba/Prueba/CC_Base_Eye/__meshes_Merge_0/__meshes_Merge_0_HDRP.png"
+                                    }
+                                },
+                                "Resource Textures": {
+                                    "Position": {
+                                        "Texture Path": "./textures/Prueba/Prueba/CC_Base_Eye/__meshes_Merge_0/__meshes_Merge_0_ResourceMap_Position.png"
+                                    },
+                                    "WSNormal": {
+                                        "Texture Path": "./textures/Prueba/Prueba/CC_Base_Eye/__meshes_Merge_0/__meshes_Merge_0_ResourceMap_WSNormal.png"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "Classic_Slick_Back": {
+                        "SubD Level": 0,
+                        "Materials": {
+                            "Hair": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    125.00000762939453,
+                                    125.00000762939453,
+                                    125.00000762939453
+                                ],
+                                "Specular Color": [
+                                    229.5,
+                                    229.5,
+                                    229.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "Hair_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Specular": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Opacity": {
+                                        "Texture Path": "Hair_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Blend": {
+                                        "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_blend_multiply.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ],
+                                        "Blend Mode": "Multiply"
+                                    },
+                                    "AO": {
+                                        "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_ao.jpg",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_HDRP.png"
+                                    }
+                                },
+                                "Resource Textures": {},
+                                "Custom Shader": {
+                                    "Shader Name": "RLHair",
+                                    "Image": {
+                                        "Hair Root Map": {
+                                            "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_Hair Root Map.jpg"
+                                        },
+                                        "Hair ID Map": {
+                                            "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_Hair ID Map.jpg"
+                                        },
+                                        "Hair Flow Map": {
+                                            "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair/Hair_Hair Flow Map.jpg"
+                                        }
+                                    },
+                                    "Variable": {
+                                        "TangentVectorColor": [
+                                            255.0,
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "TangentMapFlipGreen": 1.0,
+                                        "AO Map Occlude All Lighting": 1.0,
+                                        "Diffuse Strength": 1.2269999980926514,
+                                        "Hair Roughness Map Strength": 0.5690000057220459,
+                                        "Hair Specular Map Strength": 0.23600000143051148,
+                                        "Specular Strength": 0.3569999933242798,
+                                        "Secondary Specular Strength": 0.47600001096725466,
+                                        "Transmission Strength": 0.6470000147819519,
+                                        "No Back Face Triangles": 0.11800000071525574,
+                                        "VertexGrayToColor": [
+                                            0.0,
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "VertexColorStrength": 1.0,
+                                        "ActiveChangeHairColor": 0.0,
+                                        "BaseColorMapStrength": 0.6710000038146973,
+                                        "padding c4z": 0.0,
+                                        "paddingHasMips": 0.0,
+                                        "RootColor": [
+                                            8.0,
+                                            4.0,
+                                            2.0
+                                        ],
+                                        "padding c5w": 0.0,
+                                        "TipColor": [
+                                            1.0,
+                                            1.0,
+                                            1.0
+                                        ],
+                                        "RootTipBlendMode": 1.0,
+                                        "UseRootTipColor": 1.0,
+                                        "RootColorStrength": 1.0,
+                                        "TipColorStrength": 1.0,
+                                        "InvertRootTip": 0.0,
+                                        "_1st Dye Color": [
+                                            20.0,
+                                            13.0,
+                                            9.0
+                                        ],
+                                        "_1st Dye Strength": 0.4129999876022339,
+                                        "_1st Dye Distribution from Grayscale": [
+                                            110.51699829101563,
+                                            255.0,
+                                            255.0
+                                        ],
+                                        "_1st BlendMode": 0.0,
+                                        "Mask 1st Dye by RootMap": 1.0,
+                                        "Invert 1st Dye RootMap Mask": 0.0,
+                                        "_1st Dye add Specular": 0.0,
+                                        "padding c10w": 0.0,
+                                        "_2nd Dye Color": [
+                                            77.0,
+                                            70.0,
+                                            63.0
+                                        ],
+                                        "_2nd Dye Strength": 0.382999986410141,
+                                        "_2nd Dye Distribution from Grayscale": [
+                                            37.30649948120117,
+                                            144.38101196289063,
+                                            144.38101196289063
+                                        ],
+                                        "_2nd BlendMode": 0.0,
+                                        "Mask 2nd Dye by RootMap": 1.0,
+                                        "Invert 2nd Dye RootMap Mask": 0.0,
+                                        "_2nd Dye add Specular": 1.0,
+                                        "padding c13w": 0.0,
+                                        "BlackColor Reflection Offset X": 0.10300000011920929,
+                                        "BlackColor Reflection Offset Y": 0.003000000026077032,
+                                        "BlackColor Reflection Offset Z": -0.3700000047683716,
+                                        "padding c14w": 0.0,
+                                        "WhiteColor Reflection Offset X": -0.20900000631809236,
+                                        "WhiteColor Reflection Offset Y": 0.28299999237060549,
+                                        "WhiteColor Reflection Offset Z": -0.04699999839067459,
+                                        "padding c15w": 0.0
+                                    }
+                                }
+                            },
+                            "Hair_Clap": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Specular Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "Hair_Clap_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Opacity": {
+                                        "Texture Path": "Hair_Clap_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "MetallicAlpha": {
+                                        "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair_Clap/Hair_Clap_MetallicAlpha.png"
+                                    },
+                                    "HDRP": {
+                                        "Texture Path": "./textures/Prueba/Classic_Slick_Back/Classic_Slick_Back/Hair_Clap/Hair_Clap_MetallicAlpha.png"
+                                    }
+                                },
+                                "Resource Textures": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
