@@ -1,27 +1,33 @@
-/* 
- * Copyright (C) 2021 Victor Soupday
- * This file is part of CC_Unity_Tools <https://github.com/soupday/CC_Unity_Tools>
+/*
+ *  This file is distributed as part of CC_Unity_Tools <https://github.com/soupday/CC_Unity_Tools>
  * 
- * CC_Unity_Tools is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * CC_Unity_Tools is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with CC_Unity_Tools.  If not, see <https://www.gnu.org/licenses/>.
+ *  MIT No Attribution (https://github.com/aws/mit-0)
+ *
+ *  Copyright 2025 Victor Soupday
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of this
+ *  software and associated documentation files (the "Software"), to deal in the Software
+ *  without restriction, including without limitation the rights to use, copy, modify,
+ *  merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ *  permit persons to whom the Software is furnished to do so.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ *  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ *  PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ *  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ *  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ *  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Reallusion.Runtime
 {
-    public enum MaskSet { none = 0, set1A = 1, set1B = 2, set2 = 3, set3 = 4, set12C = 5, set3D = 6, setBCC = 7}
+    public enum MaskSet { none = 0, set1A = 1, set1B = 2, set2 = 3, set3 = 4, set12C = 5, set3D = 6, setBCC = 7 }
     public enum MaskSide { none, left, right, center }
+    public enum WrinkleProfile { None = 0, Standard = 1, MetaHuman = 2 }
+
 
     [System.Serializable]
     public struct WrinkleRule
@@ -52,9 +58,9 @@ namespace Reallusion.Runtime
 
     [System.Serializable]
     public class WrinkleRuleSet
-    {        
+    {
         public string ruleName;
-        public float weight;        
+        public float weight;
         public bool enabled = false;
         public float min = 0f, max = 1f;
 
@@ -63,7 +69,7 @@ namespace Reallusion.Runtime
         {
             ruleName = rn;
             this.min = min;
-            this.max = max;            
+            this.max = max;
             weight = 1.0f;
             if (props != null)
             {
@@ -97,9 +103,9 @@ namespace Reallusion.Runtime
     [System.Serializable]
     [ExecuteInEditMode]
     public class WrinkleManager : MonoBehaviour
-    {        
+    {
         public SkinnedMeshRenderer skinnedMeshRenderer;
-        public Material headMaterial;        
+        public Material headMaterial;
         [Range(0f, 2f)]
         public float blendScale = 1f;
         [Range(0.5f, 2f)]
@@ -109,20 +115,22 @@ namespace Reallusion.Runtime
         public WrinkleFalloffMethod falloffMethod = WrinkleFalloffMethod.Lerp;
         //[Range(0f, 5f)]
         //public float blendFadeDuration = 2f;
-        [Range(1f, 120f)]  
-        public float updateFrequency = 30f;        
+        [Range(1f, 120f)]
+        public float updateFrequency = 30f;
 
         [SerializeField]
         private Dictionary<string, WrinkleRule> wrinkleRules;
         [SerializeField]
         public List<WrinkleConfig> config;
+        [SerializeField]
+        public WrinkleProfile profile;
 
         public Vector4[] valueSets = new Vector4[12];
         private Vector4[] valueStore = new Vector4[12];
         private Vector4[] valueTemp = new Vector4[12];
 
         private float updateTimer = 0f;
-        private float lastTime = 0f;        
+        private float lastTime = 0f;
 
         public void BuildRules()
         {
@@ -206,8 +214,8 @@ namespace Reallusion.Runtime
         }
 
         public void BuildConfig(Dictionary<string, object> genericProps = null, float overallWeight = 1.0f)
-        {            
-            Dictionary<string, WrinkleProp> props = new Dictionary<string, WrinkleProp> ();
+        {
+            Dictionary<string, WrinkleProp> props = new Dictionary<string, WrinkleProp>();
             foreach (var prop in genericProps)
             {
                 props.Add(prop.Key, (WrinkleProp)prop.Value);
@@ -215,400 +223,819 @@ namespace Reallusion.Runtime
 
             BuildRules();
 
-            config = new List<WrinkleConfig>()
+            if (profile == WrinkleProfile.MetaHuman)
             {
-                new WrinkleConfig("Brow_Raise_Inner_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseInner_L"),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L", 0f, 0.03f),
-                }),
-
-                new WrinkleConfig("Brow_Raise_Inner_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseInner_R"),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R", 0f, 0.03f),
-                }),
-
-                new WrinkleConfig("Brow_Raise_Outer_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseOuter_L"),
-                }),
-
-                new WrinkleConfig("Brow_Raise_Outer_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseOuter_R"),
-                }),
-
-                new WrinkleConfig("Brow_Drop_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_L", 0f, 0.1f),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L"),
-                }),
-
-                new WrinkleConfig("Brow_Drop_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_R", 0f, 0.1f),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R"),
-                }),
-
-                new WrinkleConfig("Brow_Compress_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L"),
-                }),
-
-                new WrinkleConfig("Brow_Compress_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R"),
-                }),
-
-                new WrinkleConfig("Eye_Blink_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_L"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_L", 0f, 0.3f),
-                }),
-
-                new WrinkleConfig("Eye_Blink_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_R"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_R", 0f, 0.3f),
-                }),
-
-                new WrinkleConfig("Eye_Squint_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_L"),
-                }),
-
-                new WrinkleConfig("Eye_Squint_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_R"),
-                }),
-
-                new WrinkleConfig("Eye_L_Look_Down", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_L"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_R"),
-                }),
-
-                new WrinkleConfig("Nose_Sneer_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_L", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_L"),
-                }),
-
-                new WrinkleConfig("Nose_Sneer_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_R", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_R"),
-                }),
-
-                new WrinkleConfig("Nose_Nostril_Raise_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_L", 0f, 0.6f),
-                }),
-
-                new WrinkleConfig("Nose_Nostril_Raise_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_R", 0f, 0.6f),
-                }),
-
-                new WrinkleConfig("Nose_Crease_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("Nose_Crease_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("Cheek_Raise_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseUpper_L"),
-                }),
-
-                new WrinkleConfig("Cheek_Raise_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseUpper_R"),
-                }),
-
-                new WrinkleConfig("Jaw_Open", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen"),
-                }),
-
-                new WrinkleConfig("Jaw_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L"),
-                }),
-
-                new WrinkleConfig("Jaw_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R"),
-                }),
-
-                new WrinkleConfig("Mouth_Up", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
-                }),
-
-                new WrinkleConfig("Mouth_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.8f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("Mouth_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.8f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("Mouth_Smile_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL"),
-                }),
-
-                new WrinkleConfig("Mouth_Smile_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.6f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR"),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR"),
-                }),
-
-                new WrinkleConfig("Mouth_Smile_Sharp_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.4f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.4f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.8f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.8f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.8f),
-                }),
-
-                new WrinkleConfig("Mouth_Smile_Sharp_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.4f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.4f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.8f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.8f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.8f),
-                }),
-
-                new WrinkleConfig("Mouth_Dimple_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.15f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.15f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.3f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.3f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.3f),
-                }),
-
-                new WrinkleConfig("Mouth_Dimple_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.15f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.15f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.3f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.3f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.3f),
-                }),
-
-                new WrinkleConfig("Mouth_Stretch_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
-                }),
-
-                new WrinkleConfig("Mouth_Stretch_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
-                }),
-
-                new WrinkleConfig("Mouth_Pucker_Up_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL"),
-                }),
-
-                new WrinkleConfig("Mouth_Pucker_Up_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR"),
-                }),
-
-                new WrinkleConfig("Mouth_Pucker_Down_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L", 0f, 0.5f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL"),
-                }),
-
-                new WrinkleConfig("Mouth_Pucker_Down_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R", 0f, 0.5f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR"),
-                }),
-
-                new WrinkleConfig("Mouth_Pucker", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L", 0f, 0.5f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R", 0f, 0.5f),
-                }),
-
-                new WrinkleConfig("Mouth_Chin_Up", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
-                }),
-
-                new WrinkleConfig("Mouth_Up_Upper_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L"),
-                }),
-
-                new WrinkleConfig("Mouth_Up_Upper_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R"),
-                }),
-
-                new WrinkleConfig("Neck_Tighten_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L"),
-                }),
-
-                new WrinkleConfig("Neck_Tighten_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R"),
-                }),
-
-                new WrinkleConfig("Head_Turn_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R", 0f, 0.6f),
-                }),
-
-                new WrinkleConfig("Head_Turn_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L", 0f, 0.6f),
-                }),
-
-                new WrinkleConfig("Head_Tilt_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R", 0f, 0.75f),
-                }),
-
-                new WrinkleConfig("Head_Tilt_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L", 0f, 0.75f),
-                }),
-
-                new WrinkleConfig("Head_Backward", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.5f),
-                }),
-
-                new WrinkleConfig("Mouth_Frown_L", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
-                }),
-
-                new WrinkleConfig("Mouth_Frown_R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
-                }),
-
-                new WrinkleConfig("Mouth_Shrug_Lower", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
-                }),
-
-                new WrinkleConfig("V_Open", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6f),
-                }),
-
-                new WrinkleConfig("V_Tight_O", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("V_Tight", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("V_Wide", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("AE", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.24f),
-                }),
-
-                new WrinkleConfig("Ah", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6f),
-                }),
-
-                new WrinkleConfig("EE", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.7f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.7f),
-                }),
-
-                new WrinkleConfig("Ih", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.15f),
-                }),
-
-                new WrinkleConfig("K_G_H_NG", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.065f),
-                }),
-
-                new WrinkleConfig("Oh", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6025f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.56f),
-                }),
-
-                new WrinkleConfig("R", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.10f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.63f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.63f),
-                }),
-
-                new WrinkleConfig("S_Z", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.14f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.14f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.14f),
-                    new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.14f),
-                }),
-
-                new WrinkleConfig("T_L_D_N", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.0426f),
-                }),
-
-                new WrinkleConfig("Th", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.1212f),
-                }),
-
-                new WrinkleConfig("W_OO", new List<WrinkleRuleSet>() {
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.56f),
-                    new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.56f),
-                }),
-
-            };
+                config = new List<WrinkleConfig>()
+                {
+                    new WrinkleConfig("Brow_Raise_In_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseInner_L"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L", 0f, 0.03f),
+                    }),
+
+                    new WrinkleConfig("Brow_Raise_In_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseInner_R"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R", 0f, 0.03f),
+                    }),
+
+                    new WrinkleConfig("Brow_Raise_Outer_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseOuter_L"),
+                    }),
+
+                    new WrinkleConfig("Brow_Raise_Outer_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseOuter_R"),
+                    }),
+
+                    new WrinkleConfig("Brow_Down_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_L", 0f, 0.1f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L"),
+                    }),
+
+                    new WrinkleConfig("Brow_Down_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_R", 0f, 0.1f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R"),
+                    }),
+
+                    new WrinkleConfig("Brow_Lateral_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L"),
+                    }),
+
+                    new WrinkleConfig("Brow_Lateral_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R"),
+                    }),
+
+                    new WrinkleConfig("Eye_Blink_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_L", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Eye_Blink_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_R"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_R", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Eye_Squint_Inner_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_L"),
+                    }),
+
+                    new WrinkleConfig("Eye_Squint_Inner_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_R"),
+                    }),
+
+                    new WrinkleConfig("Eye_Look_Down_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_L"),
+                    }),
+
+                    new WrinkleConfig("Eye_Look_Down_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_R"),
+                    }),
+
+                    new WrinkleConfig("Nose_Wrinkle_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_L", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_L"),
+                    }),
+
+                    new WrinkleConfig("Nose_Wrinkle_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_R", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_R"),
+                    }),
+
+                    new WrinkleConfig("Nose_Nostril_Raise_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_L", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Nose_Nostril_Raise_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_R", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Nose_Nasolabial_Deepen_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Nose_Nasolabial_Deepen_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Eye_Cheek_Raise_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseUpper_L"),
+                    }),
+
+                    new WrinkleConfig("Eye_Cheek_Raise_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseUpper_R"),
+                    }),
+
+                    new WrinkleConfig("Jaw_Open", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen"),
+                    }),
+
+                    new WrinkleConfig("Jaw_Left", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Jaw_Right", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Up", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Left", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Right", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Corner_Pull_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Corner_Pull_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_SharpCorner_Pull_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_SharpCorner_Pull_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Dimple_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Dimple_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Stretch_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_StretchLips_Close_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Stretch_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_StretchLips_Close_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Lips_Purse_UL", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Lips_Purse_UR", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Lips_Purse_DL", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L", 0f, 0.5f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Lips_Purse_DR", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R", 0f, 0.5f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Pucker", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L", 0f, 0.5f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R", 0f, 0.5f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Chin_Up", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_UpperLip_Raise_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_UpperLip_Raise_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R"),
+                    }),
+
+                    new WrinkleConfig("Neck_Stretch_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Neck_Stretch_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Head_Turn_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Head_Turn_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Head_Tilt_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R", 0f, 0.75f),
+                    }),
+
+                    new WrinkleConfig("Head_Tilt_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L", 0f, 0.75f),
+                    }),
+
+                    new WrinkleConfig("Head_Backward", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.5f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Corner_Depress_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Corner_Depress_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Jaw_Chin_Raise_DL", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("Jaw_Chin_Raise_DR", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("V_Open", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("V_Tight_O", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("V_Tight", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("V_Wide", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("AE", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.24f),
+                    }),
+
+                    new WrinkleConfig("Ah", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("EE", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Ih", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.15f),
+                    }),
+
+                    new WrinkleConfig("K_G_H_NG", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.065f),
+                    }),
+
+                    new WrinkleConfig("Oh", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6025f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.56f),
+                    }),
+
+                    new WrinkleConfig("R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.10f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.63f),
+                    }),
+
+                    new WrinkleConfig("S_Z", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.14f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.14f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.14f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.14f),
+                    }),
+
+                    new WrinkleConfig("T_L_D_N", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.0426f),
+                    }),
+
+                    new WrinkleConfig("Th", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.1212f),
+                    }),
+
+                    new WrinkleConfig("W_OO", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.56f),
+                    }),
+                };
+            }
+            else // profle == WrinkleProfile.Std || profle == WrinkleProfile.Ext
+            {
+                config = new List<WrinkleConfig>()
+                {
+                    new WrinkleConfig("Brow_Raise_Inner_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseInner_L"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L", 0f, 0.03f),
+                    }),
+
+                    new WrinkleConfig("Brow_Raise_Inner_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseInner_R"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R", 0f, 0.03f),
+                    }),
+
+                    new WrinkleConfig("Brow_Raise_Outer_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseOuter_L"),
+                    }),
+
+                    new WrinkleConfig("Brow_Raise_Outer_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_browRaiseOuter_R"),
+                    }),
+
+                    new WrinkleConfig("Brow_Drop_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_L", 0f, 0.1f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L"),
+                    }),
+
+                    new WrinkleConfig("Brow_Drop_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_R", 0f, 0.1f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R"),
+                    }),
+
+                    new WrinkleConfig("Brow_Compress_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L"),
+                    }),
+
+                    new WrinkleConfig("Brow_Compress_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R"),
+                    }),
+
+                    new WrinkleConfig("Eye_Blink_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_L", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Eye_Blink_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_R"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_R", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Eye_Squint_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_L"),
+                    }),
+
+                    new WrinkleConfig("Eye_Squint_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_squintInner_R"),
+                    }),
+
+                    new WrinkleConfig("Eye_L_Look_Down", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_L"),
+                    }),
+
+                    new WrinkleConfig("Eye_R_Look_Down", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_blink_R"),
+                    }),
+
+                    new WrinkleConfig("Nose_Sneer_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_L", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_L"),
+                    }),
+
+                    new WrinkleConfig("Nose_Sneer_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsDown_R", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_browsLateral_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_R"),
+                    }),
+
+                    new WrinkleConfig("Nose_Nostril_Raise_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_L", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Nose_Nostril_Raise_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseWrinkler_R", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Nose_Crease_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Nose_Crease_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Cheek_Raise_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseUpper_L"),
+                    }),
+
+                    new WrinkleConfig("Cheek_Raise_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseUpper_R"),
+                    }),
+
+                    new WrinkleConfig("Jaw_Open", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen"),
+                    }),
+
+                    new WrinkleConfig("Jaw_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Jaw_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Up", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Smile_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Smile_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.6f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR"),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR"),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Smile_Sharp_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Smile_Sharp_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.4f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.8f),
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Dimple_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_L", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_L", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_L", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Dimple_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseInner_R", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_cheekRaiseOuter_R", 0f, 0.15f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm3_smile_R", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.3f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.3f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Stretch_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Stretch_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Pucker_Up_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Pucker_Up_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Pucker_Down_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L", 0f, 0.5f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Pucker_Down_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R", 0f, 0.5f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Pucker", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L", 0f, 0.5f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R", 0f, 0.5f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Chin_Up", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Up_Upper_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Up_Upper_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_noseCrease_R"),
+                    }),
+
+                    new WrinkleConfig("Neck_Tighten_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Neck_Tighten_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Head_Turn_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Head_Turn_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("Head_Tilt_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_R", 0f, 0.75f),
+                    }),
+
+                    new WrinkleConfig("Head_Tilt_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_neckStretch_L", 0f, 0.75f),
+                    }),
+
+                    new WrinkleConfig("Head_Backward", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.5f),
+                    }),
+
+                    new WrinkleConfig("Mouth_Frown_L", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_L"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Frown_R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm2_normal_head_wm2_mouthStretch_R"),
+                    }),
+
+                    new WrinkleConfig("Mouth_Shrug_Lower", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_L"),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_chinRaise_R"),
+                    }),
+
+                    new WrinkleConfig("V_Open", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("V_Tight_O", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("V_Tight", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("V_Wide", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("AE", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.24f),
+                    }),
+
+                    new WrinkleConfig("Ah", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6f),
+                    }),
+
+                    new WrinkleConfig("EE", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.7f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.7f),
+                    }),
+
+                    new WrinkleConfig("Ih", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.15f),
+                    }),
+
+                    new WrinkleConfig("K_G_H_NG", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.065f),
+                    }),
+
+                    new WrinkleConfig("Oh", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.6025f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.56f),
+                    }),
+
+                    new WrinkleConfig("R", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.10f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.63f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.63f),
+                    }),
+
+                    new WrinkleConfig("S_Z", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DL", 0f, 0.14f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UL", 0f, 0.14f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_DR", 0f, 0.14f),
+                        new WrinkleRuleSet(props, "head_wm3_normal_head_wm13_lips_UR", 0f, 0.14f),
+                    }),
+
+                    new WrinkleConfig("T_L_D_N", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.0426f),
+                    }),
+
+                    new WrinkleConfig("Th", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_jawOpen", 0f, 0.1212f),
+                    }),
+
+                    new WrinkleConfig("W_OO", new List<WrinkleRuleSet>() {
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm1_purse_UR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_DR", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UL", 0f, 0.56f),
+                        new WrinkleRuleSet(props, "head_wm1_normal_head_wm13_lips_UR", 0f, 0.56f),
+                    }),
+                };
+            }
 
             blendScale = overallWeight;
 
             UpdateBlendShapeIndices();
         }
-         
+
         public void UpdateBlendShapeIndices()
         {
             if (skinnedMeshRenderer && headMaterial)
@@ -631,7 +1058,7 @@ namespace Reallusion.Runtime
                             wm.enabled = false;
                         }
                     }
-                }                
+                }
             }
         }
 
@@ -643,8 +1070,8 @@ namespace Reallusion.Runtime
 
             if (wrinkleRules == null)
             {
-                BuildRules();                
-            }                
+                BuildRules();
+            }
 
             if (config == null)
             {
@@ -683,16 +1110,17 @@ namespace Reallusion.Runtime
             if (config != null && headMaterial && skinnedMeshRenderer)
             {
                 updateTimer -= Time.deltaTime;
+
                 if (updateTimer <= 0f)
                 {
                     float time = Time.time;
                     float delay = time - lastTime;
                     //float fadeScale = delay / blendFadeDuration;
-                    lastTime = time;                    
+                    lastTime = time;
 
                     if (falloffMethod == WrinkleFalloffMethod.Lerp)
                     {
-                        float d = blendFalloff * delay;                        
+                        float d = blendFalloff * delay;
 
                         for (int i = 0; i < valueSets.Length; i++)
                         {
@@ -810,7 +1238,7 @@ namespace Reallusion.Runtime
                     headMaterial.SetVector("_WrinkleValueSetBCCB", valueSets[11]);
 
                     updateTimer = 1f / updateFrequency;
-                }                
+                }
             }
         }
     }
